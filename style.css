@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+
+}
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+form{
+    border: 1px solid cadetblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 25vw;
+    height: 25vh;
+    margin: auto;
+    margin-top: 10%;
+}
+label , input , button{
+    margin: 2%;
+}
+button{
+    font-family: 'Open Sans', sans-serif;
+    background-color: cadetblue;
+    border-style: none;
+    padding: 1%;
+}
+input{
+    border: 1px solid cadetblue;
+    padding: 1%;
+}
+
+#tarea2{
+  height: 30vh;
+}
+
+.grupo{
+   
+    width: 23vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 30px;
+}
+textarea{
+    border: 1px solid cadetblue;
+}
+h1{
+    margin-top: 20px;
+    font-size: larger ;
+}
+
+a{
+    color: black;
+    border: 1px solid cadetblue; 
+    text-decoration: none;
+    margin: 10px;
+    padding:  10px;
+}
+a:hover{
+    background-color: cadetblue;
+}
+@media screen and (max-width: 800px) {
+    form{
+        width: 75%;
+        height: 100%;
+    }
+   
+}
