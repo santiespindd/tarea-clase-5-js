@@ -3,12 +3,18 @@
 //cuando el usuario haga click en el botón "calcular", mostrar el salario mensual
 // en una caja de texto deshabilitada. --> <input type="text" disabled id="salario-mensual"/>
 
-const salario = document.querySelector('#salario');
-let salarioMensual=  document.querySelector("#salario-mensual") ;
 
-document.querySelector('#calcular-salario').addEventListener('click' , (e) => {
- e.preventDefault();
-  console.log(this.salario.value);
-    salarioMensual.value = parseInt(this.salario.value / 12);
 
-});
+document.querySelector('#calcular-salario').onclick = function(){
+  const salario = Number(document.querySelector('#salario').value);
+  let salarioMensual=  calcularSalarioMensual(salario);
+
+  document.querySelector('#salario-mensual').value = salarioMensual;
+
+  return false;
+
+} 
+
+function calcularSalarioMensual(unSalarioAnual){
+  return unSalarioAnual / 12 ;
+}

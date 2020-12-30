@@ -10,54 +10,53 @@ const $listNumeros = document.querySelectorAll('li');
 
 let sumaNum=0;
 let prom;
-let mayor=  0;
-let menor=9999;
+let mayor=  -Infinity;
+let menor= Infinity;
 
 
-let i;
 
 
 for(i =0; i < $listNumeros.length ; i++){
+    const numero = Number($listNumeros[i].innerText);
+    sumaNum += numero; 
 
-    sumaNum += Number($listNumeros[i].innerText); 
-
-    if(menor > Number($listNumeros[i].innerText)){
-        menor = Number($listNumeros[i].innerText);
+    if(menor > numero){
+        menor = numero;
     }
-    else if(mayor < Number($listNumeros[i].innerText)) {
-        mayor= Number($listNumeros[i].innerText);
+    else if(mayor < numero) {
+        mayor= numero;
     }
 
-
-
-  }
+  };
   
    prom= parseInt(sumaNum / $listNumeros.length);
 
    document.querySelector('#promedio').innerHTML =  `El promedio es ${prom}`; 
    document.querySelector('#menor').innerHTML =  `El numero mas pequeño es ${menor}`; 
    document.querySelector('#mayor').innerHTML =  `El numero mas grande es ${mayor}`; 
-   document.querySelector('#numero-mas-frecuente').innerHTML =  `El numero mas frecuente es ${moda()}`; 
+   document.querySelector('#numero-mas-frecuente').innerHTML =  `El numero mas frecuente es ${moda($listNumeros)}`; 
 
 
-   function moda(){
+   
+   function moda(listaDeNumeros){
 
      let i;
      let j;
      let maximoNumRepeticiones= 0;
-    let frecuente=0;
+     let frecuente=0;
+     
 
-     for(i =0 ; i < $listNumeros.length ; i++){
-
+     for(i =0 ; i < listaDeNumeros.length ; i++){
+        const numero = Number($listNumeros[i].innerText);
         let repeticiones =0;
 
-        for(j =0 ; j < $listNumeros.length ; j++){
-
-            if($listNumeros[i].innerText === $listNumeros[j].innerText){
+        for(j =0 ; j < listaDeNumeros.length ; j++){
+            const numero2 = Number($listNumeros[j].innerText);
+            if(numero === numero2){
                 repeticiones++;
             }
             if(repeticiones > maximoNumRepeticiones){
-                frecuente =$listNumeros[i].innerText;
+                frecuente = numero;
                 maximoNumRepeticiones = repeticiones;
             }
         }

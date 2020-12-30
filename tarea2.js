@@ -17,17 +17,14 @@ Ejemplo form:
 *
 * */
 
-const datosPersonales = document.querySelectorAll('#dato');
+document.querySelector('#boton-enviar').onclick = function(){
+    const nombre = document.querySelector('#nombre').value;
+    const apellido = document.querySelector('#apellido').value;
+    const edad = document.querySelector('#edad').value;
+
+    document.querySelector('#datos-personales').innerHTML = nombre + ' '+ apellido +' '+ edad;;
+    document.querySelector('#resultado').innerHTML += ' ' + nombre;
 
 
-document.querySelector('#boton-enviar').addEventListener('click' , (e) => {
-    e.preventDefault();
-    let i;
-    for(i=0; i<datosPersonales.length; i++){
-        document.querySelector('#datos-personales').innerHTML +=  " "+ datosPersonales[i].value;  
-
-    }
-    document.querySelector('#resultado').innerHTML += " " + datosPersonales[0].value;  
-
-   
-   });
+    return false;
+}

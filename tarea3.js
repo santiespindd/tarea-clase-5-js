@@ -6,34 +6,33 @@
 // al apretar el botón "Calcular tiempo total", debe mostrar en un
 // <strong> pre-creado el tiempo total de los videos.
 
-const horas = document.querySelectorAll('#hora');
-const minutos = document.querySelectorAll('#minuto');
-const segundos = document.querySelectorAll('#segundo');
+const horas = document.querySelectorAll('.hora');
+const minutos = document.querySelectorAll('.minuto');
+const segundos = document.querySelectorAll('.segundo');
 
-
-document.querySelector('#calcular-horas-totales').addEventListener('click', (e) => {
-    e.preventDefault();
+document.querySelector('#calcular-horas-totales').onclick = function(){
+   
     let segundosTotales = 0;
 
-    for (i = 0 ; i < horas.length ; i++) {
-
+    for ( let i = 0 ; i < horas.length ; i++) {
         segundosTotales += Number(horas[i].value) * 3600 + Number(minutos[i].value) * 60 + Number(segundos[i].value);
-     }
-   
-     console.log(segundosAhoras(segundosTotales));
-     document.querySelector('#resultado').innerHTML = segundosAhoras(segundosTotales);
-});
+    }
+  
+    document.querySelector('#resultado').innerHTML = formateoTotalHoras(segundosTotales);
+
+    return false;
+}
 
 
 
 
-
-function segundosAhoras(segundos) {
-   let hora = Math.floor(segundos / 3600);
-    hora = (hora < 10)? '0' + hora: hora;
-    let minuto = Math.floor((segundos / 60) % 60);
-    minuto = (minuto < 10)? '0' + minuto : minuto;
-    let segundo = segundos % 60;
-    segundo = (segundo < 10)? '0' + segundo : segundo;
+function formateoTotalHoras(segundos) {
+    let hora = String(Math.floor(segundos / 3600));
+    hora = (hora < 10)? hora.padStart(2, '0'): hora;
+    let minuto = String(Math.floor((segundos / 60) % 60));
+    minuto = (minuto < 10)? minuto.padStart(2, '0') : minuto;
+    let segundo = String(segundos % 60);
+    segundo = (segundo < 10)? segundo.padStart(2, '0') : segundo;
     return 'Horas totales de video ' + hora + ':' + segundo + ':' + minuto;
+    
   }
